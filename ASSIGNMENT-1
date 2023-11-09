@@ -1,0 +1,64 @@
+import heapq
+
+class Node:
+  def __init__(self, index, distance, next_safe_minute):
+    self.index = index
+    self.distance = distance
+    self.next_safe_minute = next_safe_minute
+
+  def __lt__(self, other):
+    return self.distance < other.distance
+
+def dijkstra(graph, start):
+
+
+  distances = {}
+  distances[start] = 0
+
+  queue = []
+  heapq.heappush(queue, Node(start, 0, 0))
+
+  while queue:
+    node = heapq.heappop(queue)
+
+    for adjacent_node, edge_weight in graph[node.index]:
+      new_distance = node.distance + edge_weight
+      next_safe_minute = max(adjacent_node.next_safe_minute, node.distance + edge_weight)
+
+      if new_distance < distances.get(adjacent_node.index, float('inf')):
+        distances[adjacent_node.index] = new_distance
+        heapq.heappush(queue, Node(adjacent_node.index, new_distance, next_safe_minute))
+
+  return distances
+
+def main():
+  n, m = map(int, input().split())
+
+  graph = {}
+  for i in range(m):
+    a, b, c = map(int, input().split())
+    graph.setdefault(a, []).append((Node(b, c, 0), c))
+    graph.setdefault(b, []).append((Node(a, c, 0), c))
+
+
+  safe_minutes = {}
+  for i in range(n):
+    ki_str = input()
+    ki_list = ki_str.split()
+    ki = int(ki_list[0])
+    safe_minutes[i + 1] = [int(x) for x in ki_list[1:]]
+    heapq.heapify(safe_minutes[i + 1])
+
+
+  distances = dijkstra(graph, 1)
+
+
+  if n not in distances:
+    print(-1)
+    return
+
+
+  print(distances[n])
+
+if __name__ == '__main__':
+  main()
