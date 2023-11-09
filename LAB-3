@@ -1,0 +1,124 @@
+#lab-3
+ #1.
+ [1,3,2]
+ [9,4,12]
+ [6,8,18]
+
+m = 3  # Number of rows
+n = 3 # Number of columns
+
+# Initialize an empty matrix (list of lists)
+matrix = []
+
+# Populate the matrix with values (e.g., zeros in this case)
+for i in range(m):
+    row = [1] * n
+    matrix.append(row)
+
+# You can now access and modify elements like matrix[row_index][column_index]
+# For example, set the element in the second row and third column to 1:
+matrix[0][1] = 3
+matrix[0][2] = 2
+matrix[1][2] = 12
+matrix[1][1] = 4
+matrix[1][0] = 9
+matrix[2][0] = 6
+matrix[2][1] = 8
+matrix[2][2] = 18
+result = 1
+# Print the matrix
+for row in matrix:
+    for element in row:
+            if element % 3 == 0:
+                result *= element
+                if result > 50:
+                    print(f"Element {element} is divisible by 3 and the product exceeds 50: {result}")
+                else:
+                    print(f"Element {element} is divisible by 3, but the product is not greater than 50: {result}")
+            else:
+                print(f"Element {element} is not divisible by 3: {result}")
+
+            # Final result
+    print(f"The final product of elements divisible by 3 is: {result}")
+
+
+m = 3  # Number of rows
+n = 3 # Number of columns
+
+# Initialize an empty matrix (list of lists)
+matrix = []
+
+# Populate the matrix with values (e.g., zeros in this case)
+for i in range(m):
+    row = [1] * n
+    matrix.append(row)
+
+# You can now access and modify elements like matrix[row_index][column_index]
+# For example, set the element in the second row and third column to 1:
+matrix[0][0] = 2
+matrix[0][1] = -2
+matrix[0][2] = 4
+matrix[1][2] = -1
+matrix[1][1] = 3
+matrix[1][0] = 4
+matrix[2][0] = 1
+matrix[2][1] = -2
+matrix[2][2] = -3
+result = 1
+print(matrix)
+matrix_squared = []
+
+for i in range(m):
+    row = []
+    for j in range(n):
+        element = 0
+        for k in range(n):
+            element += matrix[i][k] * matrix[k][j]
+        row.append(element)
+    matrix_squared.append(row)
+
+# Check if the squared matrix is equal to the original matrix
+is_idempotent = matrix == matrix_squared
+
+if is_idempotent:
+    print("The matrix is idempotent.")
+else:
+    print("The matrix is not idempotent.")
+#
+#2.
+m = 3
+n = 3
+
+matrix = []
+
+for i in range(m):
+    row = [1] * n
+    matrix.append(row)
+
+matrix[0][0] = 1
+matrix[0][1] = 2
+matrix[0][2] = 3
+matrix[1][2] = 4
+matrix[1][1] = 5
+matrix[1][0] = 6
+matrix[2][0] = 7
+matrix[2][1] = 8
+matrix[2][2] = 9
+
+transpose_matrix = [[matrix[j][i] for j in range(m)] for i in range(n)]
+
+rotated_matrix = [list(reversed(row)) for row in transpose_matrix]
+
+for row in rotated_matrix:
+    print(row)
+
+array = [8, 4, 2, 1]
+
+inversion_count = 0
+
+for i in range(len(array)):
+
+    for j in range(i + 1, len(array)):
+        if array[i] > array[j]:
+            inversion_count += 1
+            print(f"({array[i]}, {array[j]})")
