@@ -1,0 +1,122 @@
+tree
+1
+left 2
+right 3
+left left 4
+
+tree-2
+1
+left 2
+right 6
+left left 4
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+
+def create_binary_tree(data):
+    root = Node(data[0])
+    for i in range(1, len(data)):
+        insert(root, data[i])
+    return root
+
+def insert(node, data):
+    if data < node.data:
+        if node.left is None:
+            node.left = Node(data)
+        else:
+            insert(node.left, data)
+    else:
+        if node.right is None:
+            node.right = Node(data)
+        else:
+            insert(node.right, data)
+
+Example usage:
+
+class TreeNode:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+
+
+root = TreeNode(1)
+left_child = TreeNode(2)
+right_child = TreeNode(3)
+left_left_child = TreeNode(4)
+
+
+root.left = left_child
+root.right = right_child
+left_child.left = left_left_child
+
+class TreeNode2:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+
+
+root = TreeNode2(1)
+root.left= TreeNode2(2)
+root.right = TreeNode2(3)
+left_child.left= TreeNode2(6)
+
+
+if TreeNode==TreeNode2:
+
+    print("true")
+
+else:
+    print("not identical")
+
+#lab 4
+1.
+#i<j then swap
+# | 8 | 4 | 2 | 1 |
+
+a=[8,4,2,1]
+for i in range (len(a)):
+    for j in range(i + 1, len(a)):
+        if a[i] > a[j]:
+            swapped = True
+            temp = a[i]
+            a[i] = a[j]
+            a[j] = temp
+        else:
+            swapped = False
+
+    if swapped == False:
+        break
+
+print(a)
+
+def invercount(array):
+  count = 0
+  for i in range(len(array)):
+    for j in range(i + 1, len(array)):
+      if array[i] > array[j]:
+        count += 1
+  return count
+for i in range(len a):
+    for j in range(i+1,len a)
+    swapped== true
+    print (i,j)
+2.
+def reverse_even_words(sentence):
+    words = sentence.split()
+
+    for i in range(len(words)):
+        if i % 2 == 0:  # Check if the word index is even
+            words[i] = words[i][::-1]  # Reverse the word
+
+    reversed_sentence = ' '.join(words)
+    return reversed_sentence
+
+
+input_sentence = "the sky is blue"
+result = reverse_even_words(input_sentence)
+print(result)
