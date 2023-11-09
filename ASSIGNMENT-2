@@ -1,0 +1,40 @@
+import heapq
+
+
+N, D = map(int, input().split())
+teachers = []
+for _ in range(N):
+    Di, Ti, Si = map(int, input().split())
+    teachers.append((Di, Ti, Si))
+
+
+teachers.sort()
+
+curse = 0
+current_day = 1
+teacher_queue = []
+
+for i in range(N):
+    Di, Ti, Si = teachers[i]
+
+
+    while current_day < Di and teacher_queue:
+        min_curse, teacher_idx = heapq.heappop(teacher_queue)
+        curse -= min_curse
+        current_day += 1
+
+
+    if current_day <= Di:
+        lectures_to_schedule = min(Ti, D - Di + 1)
+        for _ in range(lectures_to_schedule):
+            heapq.heappush(teacher_queue, (Si, i))
+            curse += Si
+            current_day += 1
+
+
+while current_day <= D and teacher_queue:
+    min_curse, _ = heapq.heappop(teacher_queue)
+    curse -= min_curse
+    current_day += 1
+
+print(curse)
