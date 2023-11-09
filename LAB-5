@@ -1,0 +1,183 @@
+Lab
+5
+
+
+def create_matric(rows, columns)
+    x = ((4, 4))
+
+
+x[::2, 1::2] = 1
+x[1::2, ::2] = 1
+print(x)
+m = [[0, 0, 1, 0],
+     [1, 1, 0, 1],
+     [0, 0, 0, 0],
+     [1, 1, 1, 1]]
+max1 = 0
+maxline = -1
+for i in range(len(m)):
+    ones = sum(m[i])
+    if ones > max1:
+        max1 = ones
+        maxline = i
+print("max no of 1s :", maxline)
+from unittest import skip
+
+MATRIX
+AFTER
+INSERTION: 1
+2(3)
+4
+5
+(6 7   8    6  10)
+11
+12(13)
+14
+15
+ORIGNINAL
+MATRIX: 1
+2
+4
+5
+11
+12
+14
+15
+
+# CREATING MATRIX:
+A
+basic
+code
+for matrix input from user
+
+R = 2
+C = 4
+
+matrix = []
+print[1
+2
+4
+5
+11
+12
+14
+15]
+
+for i in range(R):
+    a = []
+    for j in range(C):
+        a.append(int(input()))
+    matrix.append(a)
+
+for i in range(R):
+    for j in range(C):
+        print(matrix[i][j], end=" ")
+    print()
+
+# create
+matrix = [[1, 2, 4, 5],
+          [11, 12, 14, 15]]
+
+new_rows = [[1, 2, 3, 4, 5],
+            [6, 7, 8, 6, 10],
+            [11, 12, 13, 14, 15]]
+
+num_rows = len(matrix)
+
+matrix[num_rows // 3:num_rows // 2 + len(new_rows)] = new_rows
+
+for row in matrix:
+    print(row)
+
+text = ['A', 'B', 'A', 'B', 'C', 'D', 'A', 'B', 'C', 'A', 'B', 'C', 'D', 'B', 'D', 'C', 'A', 'B', 'B', 'A', 'B', 'A',
+        'B', 'A', 'A', 'B', 'C', 'D']
+Input = ['A', 'B', 'C', 'D']
+text.sort()
+Input.sort()
+# Output = index value = 2,9,23
+
+print(text.index("A"))
+
+if text != Input:
+    skip
+else:
+    print(text.index("A"))
+text = ['A', 'B', 'A', 'B', 'C', 'D', 'A', 'B', 'C', 'A', 'B', 'C', 'D', 'B', 'D', 'C', 'A', 'B', 'B', 'A', 'B', 'A',
+        'B', 'A', 'A', 'B', 'C', 'D']
+Input = ['A', 'B', 'C', 'D']
+
+index_list = []
+
+for i in range(len(text) - len(Input) + 1):
+    if text[i:i + len(Input)] == Input:
+        index_list.append(i)
+print(index_list)
+
+# multiply A,B without using multiplication or division operator , dont use bitwise operations and dont use loops
+A = 3
+B = 4
+result = 0
+while B > 0:
+    result += A
+    B -= 1
+print("Result:", result)
+
+A = 3
+B = 4
+result = 0
+if B == 0:
+    return result
+elif B > 0:
+    result += A
+    B -= 1
+elif B < 0:
+    result -= A
+    B += 1
+print("Result:", result)
+
+#
+A = 3
+B = 4
+result = 0
+result += A
+result += A
+result += A
+result += A
+
+print("Result:", result)
+
+A = 3
+B = 4
+
+
+def recursive_multiply(A, B, result=0):
+    if B == 0:
+        return result
+    elif B > 0:
+        result += A
+        B -= 1
+    elif B < 0:
+        result -= A
+        B += 1
+    return recursive_multiply(A, B, result)
+
+
+result = recursive_multiply(A, B)
+print("Result:", result)
+
+# 1101  s1= MOM
+# 11110 s2 =MMO
+# return the number of swaps made from s1 to s2
+
+s1 = "MOM"
+s2 = "MMO"
+counter = 0
+for i in range(len(s1)):
+    if s1[i] == s2[i]:
+        continue
+    temp = s1[i]
+    s1[i] = s2[i]
+    s2[i] = temp
+    counter += 1
+
+print(counter)
