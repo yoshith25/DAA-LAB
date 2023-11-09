@@ -1,0 +1,83 @@
+#LAB-2
+#1.
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def is_circular(self):
+        if not self.head:
+            return False
+
+        slow_pointer = self.head
+        fast_pointer = self.head
+
+        while fast_pointer and fast_pointer.next:
+            slow_pointer = slow_pointer.next
+            fast_pointer = fast_pointer.next.next
+
+            if slow_pointer == fast_pointer:
+                return True
+
+        return False
+my_list = LinkedList()
+node1 = Node(10)
+node2 = Node(20)
+node3 = Node(30)
+
+my_list.head = node1
+node1.next = node2
+node2.next = node3
+node3.next = None
+
+print(my_list.is_circular())
+
+node3.next = node1
+
+print(my_list.is_circular())
+
+#2
+def remove_duplicates(arr):
+    b = []
+
+    for i in arr:
+        if i not in b:
+            b += [i]
+    return b
+  a = a.replace(" ", "").lower()
+m = [1, 12, 11, 10, 11, 1]
+result = remove_duplicates(m)
+print(result)
+
+#3
+def is_palindrome(a):
+    return a == a [::-1]
+x = "mom"
+result = is_palindrome(x)
+print(result)
+
+first_position=[a]
+second_position=[b]
+third_position=[c]
+result=swap first_position second_position third_position
+print(result)
+
+def generate_combinations(chars, current_combination, index):
+    if index == len(chars):
+        print(current_combination)
+        return
+
+    generate_combinations(chars, current_combination + chars[index], index + 1)
+
+
+    generate_combinations(chars, current_combination, index + 1)
+
+
+characters = ['a', 'b', 'c']
+
+
+generate_combinations(characters, "", 0)
