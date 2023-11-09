@@ -1,0 +1,51 @@
+# LAB-1
+#1.
+def bubbleSort(arr):
+    n = len(arr)
+    for i in range(n):
+        swapped = False
+        for j in range(0, n - i - 1):
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+                swapped = True
+        if (swapped == False):
+            break
+if __name__ == "_main_":
+    arr = [1,1,0,0,2,2,0,0,1,0,2,0,1]
+    bubbleSort(arr)
+    print("Sorted array:")
+    for i in range(len(arr)):
+        print("%d" % arr[i], end=" ")
+
+
+2.
+def is_balanced(expression):
+    b = []  # Create an empty stack to keep track of opening parentheses
+
+    # Define a dictionary to map closing parentheses to their corresponding opening parentheses
+    parentheses_map = {')': '(', '}': '{', ']': '['}
+
+    # Iterate through each character in the expression
+    for char in expression:
+        if char in '([{':
+            # If it's an opening parenthesis, push it onto the stack
+            b.append(char)
+        elif char in ')]}':
+            # If it's a closing parenthesis, check if the stack is empty
+            if not b:
+                return False  # Unbalanced: no matching opening parenthesis found
+            # Pop the top element from the stack and compare it to the current closing parenthesis
+            top = b.pop()
+            if top != parentheses_map[char]:
+                return False  # Unbalanced: mismatched opening and closing parentheses
+
+    # After iterating through the entire expression, check if the stack is empty
+    return not b  # If the stack is empty, it's balanced; otherwise, it's unbalanced
+
+
+print(is_balanced("()"))  # True
+print(is_balanced("()[]{}"))  # True
+print(is_balanced("(]"))  # False
+print(is_balanced("([)]"))  # False
+print(is_balanced("{[()]}"))  # True
+print(is_balanced("[({{[()]}})]"))
