@@ -1,0 +1,22 @@
+LAB
+6
+# Create the dictionary
+my_dict = {1: '000', 2: 'a''b''c', 3: 'd''e''f', 4: 'g''h''i', 5: 'j''k''l', 6: 'm''n''o', 7: 'p''q''r', 8: 's''t''u',
+           9: 'v''w''z'}
+
+# Get the user input
+user_input = int(input("Enter a number: "))
+
+# Get the letters for the given number
+first_digit_letters = my_dict[user_input // 10]
+second_digit_letters = my_dict[user_input % 10]
+
+# Generate all permutations of the letters
+permutations = []
+for first_digit_letter in first_digit_letters:
+    for second_digit_letter in second_digit_letters:
+        permutations.append([first_digit_letter, second_digit_letter])
+
+# Print all permutations
+for permutation in permutations:
+    print(''.join(permutation))
